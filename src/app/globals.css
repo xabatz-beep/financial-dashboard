@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-noche-950: #06090e;
+  --color-noche-900: #0b1018;
+  --color-noche-800: #131a25;
+  --color-noche-700: #1c2533;
+  --color-cesped: #22c55e;
+  --color-cerveza: #f5a524;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-noche-950);
+  background-image:
+    radial-gradient(60rem 30rem at 15% -10%, rgba(34, 197, 94, 0.16), transparent 60%),
+    radial-gradient(50rem 26rem at 90% 0%, rgba(245, 165, 36, 0.12), transparent 55%);
+  background-attachment: fixed;
+  color: #e8edf4;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .tarjeta {
+    @apply rounded-2xl border border-white/10 bg-white/[0.04];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5
+      px-2.5 py-1 text-xs font-medium text-slate-300;
+  }
+
+  .boton {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm
+      font-semibold transition-colors disabled:opacity-50;
+  }
+
+  .boton-primario {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-cesped px-4 py-2.5
+      text-sm font-semibold text-noche-950 transition-colors hover:bg-cesped/90
+      disabled:opacity-50;
+  }
+
+  .boton-secundario {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15
+      bg-white/5 px-4 py-2.5 text-sm font-semibold text-slate-100 transition-colors
+      hover:bg-white/10 disabled:opacity-50;
+  }
+
+  .campo {
+    @apply w-full rounded-xl border border-white/10 bg-noche-900/80 px-3.5 py-2.5 text-sm
+      text-slate-100 placeholder:text-slate-500 focus:border-cesped/60 focus:ring-2
+      focus:ring-cesped/20 focus:outline-none;
+  }
+
+  .etiqueta {
+    @apply mb-1.5 block text-xs font-semibold tracking-wide text-slate-400 uppercase;
+  }
+}
+
+/* Filtros horizontales sin barra de desplazamiento visible. */
+.sin-scrollbar {
+  scrollbar-width: none;
+}
+.sin-scrollbar::-webkit-scrollbar {
+  display: none;
+}
